@@ -136,8 +136,81 @@ namespace Template_4333
 
                     package2.Save();
                 }
+                
             }
 
+        }
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            WorkersDataGrid.ItemsSource = null;
+            string jsonFilePath = "C:\\Users\\DNS\\Desktop\\Учеба колледж\\3 курс\\2 семестр\\Инструментальные средства разработки программного обеспечения\\Лабораторные работы\\Лабораторная работа №3\\Импорт-20230311T123022Z-001\\Импорт\\4.json";
+            string jsonContent = File.ReadAllText(jsonFilePath);
+
+            var jsonArray = JArray.Parse(jsonContent);
+
+            var columns = WorkersDataGrid.Columns;
+
+            // Получаем свойства первого объекта массива
+            var firstObject = jsonArray.First();
+            var properties = firstObject.Children<JProperty>();
+
+            WorkersDataGrid.ItemsSource = jsonArray;
+        }
+
+        private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+            DocX document = DocX.Create("output.docx");
+
+            // Получение уникальных значений столбца "Position"
+            var positions = WorkersDataGrid.Items.OfType<JObject>()
+                                    .Select(row => row["Position"].ToString())
+                                    .Distinct()
+                                    .ToList();
+
+            foreach (var position in positions)
+            {
+                // Создание новой страницы
+                document.InsertSectionPageBreak();
+
+                // Добавление заголовка категории
+                document.InsertParagraph(position);
+
+                // Получение данных для текущей категории
+                var categoryData = WorkersDataGrid.Items.OfType<JObject>()
+                                         .Where(row => row["Position"].ToString() == position)
+                                         .ToList();
+
+                // Создание таблицы с данными
+                Xceed.Document.NET.Table table = document.AddTable(categoryData.Count + 1, categoryData.First().Properties().Count());
+
+                // Заполнение заголовков столбцов
+                var headers = categoryData.First().Properties().Select(p => p.Name).ToList();
+                for (int i = 0; i < headers.Count; i++)
+                {
+                    table.Rows[0].Cells[i].Paragraphs.First().Append(headers[i]);
+                }
+
+                // Заполнение данными
+                for (int i = 0; i < categoryData.Count; i++)
+                {
+                    var row = categoryData[i];
+                    int j = 0;
+                    foreach (var property in row.Properties())
+                    {
+                        table.Rows[i + 1].Cells[j].Paragraphs.First().Append(property.Value.ToString());
+                        j++;
+                    }
+                }
+
+                // Добавление таблицы в документ
+                document.InsertTable(table);
+
+                // Вывод количества элементов
+                document.InsertParagraph($"Количество элементов: {categoryData.Count}");
+            }
+
+            // Сохранение документа
+            document.Save();
         }
     }
 }

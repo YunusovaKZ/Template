@@ -8,6 +8,8 @@
         Title="Yunusova4333" Height="643" Width="901">
 
     <Grid Background="BlueViolet">
+        <Button Content="Импорт JSON" Height="86" Width="196" Click="Button_Click_2" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="25"/>
+        <Button Content="Экспорт word" Height="86" Width="196" Click="Button_Click_3" HorizontalAlignment="Right" FontSize="25"/>
         <Label Content="Юнусова Карина 4333 18 лет" FontSize="30" Margin="0,0,0,10"></Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Margin="21,137,120,400" FontSize="30" Click="Button_Click_1" Height="97">Импорт данных</Button>
