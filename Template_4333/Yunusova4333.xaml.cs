@@ -157,7 +157,7 @@ namespace Template_4333
             WorkersDataGrid.ItemsSource = jsonArray;
         }
 
-        private void Button_Click3(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             DocX document = DocX.Create("output.docx");
 

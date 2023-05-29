@@ -8,12 +8,12 @@
         Title="Yunusova4333" Height="643" Width="901">
 
     <Grid Background="BlueViolet">
-        <Button Content="Импорт JSON" Height="86" Width="196" Click="Button_Click_2" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="25"/>
-        <Button Content="Экспорт word" Height="86" Width="196" Click="Button_Click_3" HorizontalAlignment="Right" FontSize="25"/>
         <Label Content="Юнусова Карина 4333 18 лет" FontSize="30" Margin="0,0,0,10"></Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="21,137,120,400" FontSize="30" Click="Button_Click_1" Height="97">Импорт данных</Button>
-            <Button Margin="0,137,72,400" FontSize="30" Content="Экспорт в Excel" Click="Button_Click" Height="104"/>
+            <Button Margin="0,137,10,400" FontSize="30" Click="Button_Click_1" Height="97">Импорт данных</Button>
+            <Button Margin="0,137,10,400" FontSize="30" Content="Экспорт в Excel" Click="Button_Click" Height="104"/>
+            <Button Margin="0, 10,10,250" Content="Импорт JSON" Height="86" Width="196" Click="Button_Click_2" FontSize="25"/>
+            <Button Margin="0, 10,10,250" Content="Экспорт word" Height="86" Width="196" Click="Button_Click_3" HorizontalAlignment="Right" FontSize="25"/>
         </StackPanel>
         <DataGrid x:Name="WorkersDataGrid" Height="250" Width="400" AutoGenerateColumns="True" Margin="250,270,251,107">
 
