@@ -63,5 +63,12 @@ namespace Template_4333
             ibragimov.Show();
             this.Hide();
         }
+
+        private void _4333_Yunusova(object sender, RoutedEventArgs e)
+        {
+            var dinar = new Yunusova4333();
+            dinar.Show();
+            this.Hide();
+        }
     }
 }
