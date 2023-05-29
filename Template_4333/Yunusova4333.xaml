@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Template_4333"
         mc:Ignorable="d"
-        Title="Yunusova4333" Height="450" Width="800">
+        Title="Yunusova4333" Height="643" Width="901">
 
     <Grid Background="BlueViolet">
-        <Label Content="Юнусова Карина 4333 18 лет" FontSize="30"></Label>
+        <Label Content="Юнусова Карина 4333 18 лет" FontSize="30" Margin="0,0,0,10"></Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="21,137,120,400" FontSize="30" Click="Button_Click_1" Height="97">Импорт данных</Button>
+            <Button Margin="0,137,72,400" FontSize="30" Content="Экспорт в Excel" Click="Button_Click" Height="104"/>
+        </StackPanel>
+        <DataGrid x:Name="WorkersDataGrid" Height="250" Width="400" AutoGenerateColumns="True" Margin="250,270,251,107">
+
+        </DataGrid>
     </Grid>
 </Window>
