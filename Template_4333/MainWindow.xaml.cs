@@ -66,8 +66,8 @@ namespace Template_4333
 
         private void _4333_Yunusova(object sender, RoutedEventArgs e)
         {
-            var dinar = new Yunusova4333();
-            dinar.Show();
+            var karina = new Yunusova4333();
+            karina.Show();
             this.Hide();
         }
     }

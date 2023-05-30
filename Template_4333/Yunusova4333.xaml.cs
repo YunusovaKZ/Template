@@ -17,7 +17,10 @@ using Xceed.Document.NET;
 using OfficeOpenXml;
 using System.IO;
 using Newtonsoft.Json.Linq;
-
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace Template_4333
 {
@@ -27,7 +30,7 @@ namespace Template_4333
     public partial class Yunusova4333 : Window
     {
         string filePath = "C:\\Users\\DNS\\Desktop\\Учеба колледж\\3 курс\\2 семестр\\Инструментальные средства разработки программного обеспечения\\Лабораторные работы\\Лабораторная работа №2\\Импорт-20230213T083437Z-001\\Импорт\\4.xlsx";
-        string filePath2 = "E:\\Чиркаши на Д\\Прочая хрень по работе\\ISRPO_D\\ivi.xlsx";
+        string filePath2 = "C:\\Users\\DNS\\Desktop\\Учеба колледж\\3 курс\\2 семестр\\Инструментальные средства разработки программного обеспечения\\Лабораторные работы\\Лабораторная работа №3\\Лист Microsoft Excel.xlsx";
         public Yunusova4333()
         {
             InitializeComponent();
@@ -136,7 +139,7 @@ namespace Template_4333
 
                     package2.Save();
                 }
-                
+
             }
 
         }
@@ -156,6 +159,9 @@ namespace Template_4333
 
             WorkersDataGrid.ItemsSource = jsonArray;
         }
+
+
+
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
@@ -212,5 +218,39 @@ namespace Template_4333
             // Сохранение документа
             document.Save();
         }
+        /*// создание нового документа Word
+        DocX document = DocX.Create("ExportedTable.docx");
+
+        // создание таблицы в документе Word
+        Xceed.Document.NET.Table table = document.AddTable(WorkersDataGrid.Items.Count + 1, WorkersDataGrid.Columns.Count);
+
+        // добавление строк в таблицу
+        for (int i = 0; i < WorkersDataGrid.Columns.Count; i++)
+        {
+            table.Rows[0].Cells[i].Paragraphs.First().Append(WorkersDataGrid.Columns[i].Header.ToString());
+        }
+
+        // добавление данных в таблицу
+        for (int i = 0; i < WorkersDataGrid.Items.Count - 1; i++)
+        {
+            var row = WorkersDataGrid.Items[i] as DataRowView;
+            for (int j = 0; j < row.Row.ItemArray.Length; j++)
+            {
+                worksheet.Cells[i + 2, j + 1].Value = row.Row.ItemArray[j];
+            }
+            WorkersDataGrid.Items.SortDescriptions.Clear();
+            WorkersDataGrid.Items.Refresh();
+           /* for (int i = 1; i < WorkersDataGrid.Items.Count + 1; i++)
+        {
+            for (int j = 0; j < WorkersDataGrid.Columns.Count; j++)
+            {
+                table.Rows[i].Cells[j].Paragraphs.First().Append(WorkersDataGrid.Items[i - 1].GetType().GetProperty(WorkersDataGrid.Columns[j].SortMemberPath).GetValue(WorkersDataGrid.Items[i - 1], null).ToString());
+            }
+        }
+
+        // сохранение документа Word
+        document.Save();*/
     }
+
 }
+    
